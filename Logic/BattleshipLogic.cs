@@ -27,14 +27,14 @@ namespace Battleship.Logic
             this.firedPositions = firedPositions;
             this.createdShips = createdShips;
         }
-        public void Init(ref bool[,] battlefield, ref List<Ship> createdShips)
+        public void Init(ref List<Ship> createdShips)
         {
             for (int i = 0; i < numberOfFiveSquaresShips; i++)
             {
                 bool hasShipBeenPlaced = false;
                 do
                 {
-                    hasShipBeenPlaced = placeShip(5, ref battlefield, ref createdShips);
+                    hasShipBeenPlaced = placeShip(5, ref createdShips);
                 }
                 while (hasShipBeenPlaced == false);
             }
@@ -43,51 +43,12 @@ namespace Battleship.Logic
                 bool hasShipBeenPlaced = false;
                 do
                 {
-                    hasShipBeenPlaced = placeShip(4, ref battlefield, ref createdShips);
+                    hasShipBeenPlaced = placeShip(4, ref createdShips);
                 }
                 while (hasShipBeenPlaced == false);
             }
         }
-        //bool placeShip(int numberOfSquares, ref bool[,] battlefield, ref List<Ship> createdShips)
-        //{
-        //    bool wasShipPlaced = false;
-        //    int initialPosition = 0;
-        //    Ship newShip = new Ship();
-        //    bool isHorizontal = Convert.ToBoolean(random.Next(2));
-        //    if (isHorizontal)
-        //    {
-        //        int rowNumber = random.Next(numberOfRows);
-        //        initialPosition = random.Next(numberOfColumns - numberOfSquares + 1);
-        //        for (int j = initialPosition; j < numberOfSquares + initialPosition; j++)
-        //        {
-        //            if (battlefield[rowNumber, j] == true) return false;
-        //        }
-        //        for (int j = initialPosition; j < numberOfSquares + initialPosition; j++)
-        //        {
-        //            battlefield[rowNumber, j] = true;
-        //            newShip.Coordinates.Add(new Tuple<int, int>(rowNumber, j));
-        //        }
-        //        wasShipPlaced = true;
-        //    }
-        //    else
-        //    {
-        //        int columnNumber = random.Next(numberOfColumns);
-        //        initialPosition = random.Next(numberOfRows - numberOfSquares + 1);
-        //        for (int i = initialPosition; i < numberOfSquares + initialPosition; i++)
-        //        {
-        //            if (battlefield[i, columnNumber] == true) return false;
-        //        }
-        //        for (int i = initialPosition; i < numberOfSquares + initialPosition; i++)
-        //        {
-        //            battlefield[i, columnNumber] = true;
-        //            newShip.Coordinates.Add(new Tuple<int, int>(i, columnNumber));
-        //        }
-        //        wasShipPlaced = true;
-        //    }
-        //    createdShips.Add(newShip);
-        //    return wasShipPlaced;
-        //}
-        bool placeShip(int numberOfSquares, ref bool[,] battlefield, ref List<Ship> createdShips)
+        bool placeShip(int numberOfSquares, ref List<Ship> createdShips)
         {
             bool wasShipPlaced = false;
             int initialPosition = 0;
